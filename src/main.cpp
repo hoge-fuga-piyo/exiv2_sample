@@ -2,7 +2,6 @@
 #include <iostream>
 
 int main(int args, char** argv) {
-	//std::string image_path = "../sampledata/0000.jpg";
 	std::string image_path = "../sampledata/0000.jpg";
 
 	try {
