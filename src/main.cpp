@@ -5,7 +5,10 @@ int main(int args, char** argv) {
 	std::string image_path = "../sampledata/0000.jpg";
 
 	try {
-		Exiv2::Image::AutoPtr image = Exiv2::ImageFactory::open(image_path);
+		// v0.27.2-RC3以前はAutoPtrが返り値、2019/7/21現在の最新masterブランチではunique_ptr<Exiv2::Image>が返り値になっている。
+		// C++17でauto_ptrが削除されたからと思われる。
+		//Exiv2::Image::AutoPtr image = Exiv2::ImageFactory::open(image_path);
+		std::unique_ptr<Exiv2::Image> image = Exiv2::ImageFactory::open(image_path);
 		image->readMetadata();
 
 		Exiv2::ExifData& exif_data = image->exifData();
