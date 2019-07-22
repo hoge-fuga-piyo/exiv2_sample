@@ -17,6 +17,17 @@ int main(int args, char** argv) {
 			return 1;
 		}
 
+		// タグの存在確認
+		//auto itr = exif_data.findKey(Exiv2::ExifKey("Exif.Photo.FocalPlaneXResolution"));
+		auto itr = exif_data.findKey(Exiv2::ExifKey("Exif.Photo.FocalLength"));
+		if (itr != exif_data.end()) {
+			std::cout << "Tag is exist" << std::endl;
+		}
+		else {
+			std::cout << "Tag is not exist" << std::endl;
+		}
+
+
 		Exiv2::ExifData::const_iterator end = exif_data.end();
 		for (Exiv2::ExifData::const_iterator it = exif_data.begin(); it != end; ++it) {
 			//const char* tn = it->typeName();
